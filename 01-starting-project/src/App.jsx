@@ -6,8 +6,8 @@ function App() {
 
   return (
     <>
-      <main>
       <Header />
+      <main>
         <CoreConcepts />
         <Examples />
       </main>
