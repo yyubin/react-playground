@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive, onChangeName }) {
     const [ playerName, setPlayerName ] = useState(initialName);
     const [ isEditing, setIsEditing ] = useState(false);
 
@@ -8,6 +8,10 @@ export default function Player({ initialName, symbol, isActive }) {
         // setIsEditing(!isEditing); // => schedules a state update to true
         // setIsEditing(!isEditing); // 둘다 처음 값(false)을 true로 바꾸기만 함
         setIsEditing((editing) => !editing); // !isEditing은 상태 업데이트가 즉시 실행되지 않는 문제가 있음 
+
+        if (isEditing) {
+            onChangeName(symbol, playerName);
+        }
     }
 
     function handleChange(event) {
