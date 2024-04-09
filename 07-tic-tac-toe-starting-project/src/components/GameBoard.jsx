@@ -13,18 +13,6 @@ export default function GameBoard({ onSelectSqure, turns }) {
         
         gameBoard[row][col] = player;
     }
-    // const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-    // function handleSelectSquare(rowIndex, colIndex) {
-    //     setGameBoard((prevGameBoard) => {
-    //         const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-    //         // 객체 복사후 사용해야함
-    //         updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-    //         return updatedBoard;
-    //     });
-
-    //     onSelectSqure();
-    // }
 
     return (
         <ol id="game-board">
@@ -33,7 +21,12 @@ export default function GameBoard({ onSelectSqure, turns }) {
                 <ol>
                     {row.map((playerSymbol, colIndex) => (
                         <li key={colIndex}>
-                            <button onClick={() => onSelectSqure(rowIndex, colIndex)}>{playerSymbol}</button>
+                            <button 
+                                onClick={() => onSelectSqure(rowIndex, colIndex)} 
+                                disabled={playerSymbol !== null}
+                            >
+                                {playerSymbol}
+                            </button>
                         </li>
                     ))}
                 </ol>
