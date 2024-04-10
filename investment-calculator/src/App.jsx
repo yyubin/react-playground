@@ -14,11 +14,13 @@ const Values = {
 function App() {
   const [ userInput, setUserInput ] = useState(Values);
 
+  const inputIsValid = userInput.duration >= 1;
+
   function handleChangeValue(subject, value) {
     setUserInput(prevValues => {
       return {
         ...prevValues,
-        [subject]: value
+        [subject]: +value
       }
     })
   }
@@ -26,19 +28,20 @@ function App() {
   return (
     <>
       <Header></Header>
-      <div id="user-input">
+      <section id="user-input">
         <div className="input-group">
-          <UserInput subject="initialInvestment" onChangeValue={handleChangeValue}></UserInput>
-          <UserInput subject="annualInvestment" onChangeValue={handleChangeValue}></UserInput>
+          <p><UserInput subject="initialInvestment" onChangeValue={handleChangeValue}></UserInput></p>
+          <p><UserInput subject="annualInvestment" onChangeValue={handleChangeValue}></UserInput></p>
         </div>
         <div className="input-group">
-          <UserInput subject="expectedReturn" onChangeValue={handleChangeValue}></UserInput>
-          <UserInput subject="duration" onChangeValue={handleChangeValue}></UserInput>
+          <p><UserInput subject="expectedReturn" onChangeValue={handleChangeValue}></UserInput></p>
+          <p><UserInput subject="duration" onChangeValue={handleChangeValue}></UserInput></p>
         </div>
-      </div>
-      <div id="result">
-        <Result userInput={userInput}></Result>
-      </div>
+      </section>
+      {!inputIsValid && (
+        <p className="center">Please enter a duration greater than zero.</p>
+      )}
+      {inputIsValid && <Result userInput={userInput} />}
     </>
   )
 }

@@ -8,9 +8,9 @@ export default function UserInput({ initialValue, subject, onChangeValue }) {
     }
 
     return (
-        <div>
+        <>
             <label>{subject}</label>
-            <input id={subject} type="number" onChange={handleChangeInputValue} />
-        </div>
+            <input id={subject} type="number" required onChange={handleChangeInputValue} />
+        </>
     )
 }
