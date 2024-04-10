@@ -6,7 +6,14 @@ function App() {
     <>
       <Header></Header>
       <div id="user-input">
-        <UserInput subject="initial investment"></UserInput>
+        <div className="input-group">
+          <UserInput subject="initial investment"></UserInput>
+          <UserInput subject="annual investment"></UserInput>
+        </div>
+        <div className="input-group">
+          <UserInput subject="expected return"></UserInput>
+          <UserInput subject="duration"></UserInput>
+        </div>
       </div>
     </>
   )
